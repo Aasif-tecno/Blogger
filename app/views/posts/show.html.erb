@@ -1,0 +1,27 @@
+<div class="d-flex justify-content-between mb-3">
+  <%= link_to "back", root_path, class: 'btn btn-primary' %>
+  <% if current_author == @post.author %>
+    <%= link_to "Edit",edit_post_path(@post), class: 'btn btn-primary'%>  
+  <% end %>
+</div>
+<div class="card post-card mb-5">
+  <img class="card-img-top" src="<%= url_for(@post.header_image)%>" alt="Card image cap">
+  <div class="card-body">
+    <div class="p-4">
+      <h3 class="card-title"><%= @post.title %></h3>
+      <% @post.elements.each do |element| %>
+        <% if element.image? %>
+          <div class="show-image mb-3">
+            <%= image_tag(element.image) %>
+          </div>
+        <% else %>
+          <div class="content-elemet mb-3">
+            <%= element.content %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+   
+

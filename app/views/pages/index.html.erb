@@ -1,0 +1,15 @@
+<h1 class="mb-5">Welcome to Bloggers!</h1>
+<div class="row">
+  <% @posts.each do |post| %>
+    <div class="col-md-6 col-lg-4">
+        <div class="card home-card mb-5">
+          <img class="card-img-top" src="<%= url_for(post.header_image)%>" alt="Card image cap">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title"><%= truncate(post.title, length: 50) %></h5>
+            <p class="card-text"><%= truncate(post.description, length: 100) %></p>
+            <%= link_to "Read Post", post_path(post.slug), class: "btn btn-primary mt-auto" %>
+          </div>
+        </div>
+    </div>
+  <% end %>
+</div>
